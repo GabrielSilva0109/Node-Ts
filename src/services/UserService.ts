@@ -14,4 +14,8 @@ export class UserService {
         db.push(user)
         console.log("DB Update!", db)
     }
+
+    getAllUsers = () => {
+        return db
+    }
 }
