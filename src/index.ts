@@ -1,1 +1,5 @@
-console.log('hello new project update')
+import express from 'express'
+
+const server = express()
+
+server.listen(5000, () => console.log('Server on!'))
