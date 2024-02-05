@@ -16,9 +16,9 @@ export class UserController {
 
     getAllUsers = () => {
         const userService = new UserService()
-
         const users = userService.getAllUsers()
 
-        return response.status(200).json( users )    }
+        return response.status(200).json( users )   
+    }
 }
 
