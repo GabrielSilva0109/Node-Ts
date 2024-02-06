@@ -1,50 +1,27 @@
 import { Request, Response } from "express"
 import { UserService } from "../services/UserService"
 import { UserController } from "./UserController"
-import { Params } from "express-serve-static-core"
+import { makeMokeResponse } from "../__mocks__/mockResponse.mock"
 
-
-type MockResponse<TResult> = Response & {
-    state: {
-        status?: number,
-        json?: TResult | unknown
-    }
-}
 
 describe('UserController', () =>{
     const mockUserService: Partial<UserService> ={
-
+        createUser: jest.fn()
     }
     const userController = new UserController(mockUserService as UserService)
-
-    const makeMokeRequest = ({params, query}:{params?: Params, query?: Params}):Request => {
-        const request = {
-            params: params || { },
-            query: query || { }
-        } as unknown
-        return request as Request
-    }
-
-    function makeMokeResponse<TResult> () {
-        const response = {
-            state: {}
-        } as MockResponse<TResult>
-
-        response.status = (status: number) => {
-            response.state.status = status
-            return response
-        }
-
-        response.json = (json: TResult) => {
-            response.state.json = json
-            return response
-        }
-
-        return response
-    }
+   
 
     it('Deve adicionar um novo usuario', () => {
-        const mockRequest = makeMokeRequest({})
-        const response = userController.createUser(mockRequest)
+        const mockRequest = {
+            body: {
+                name: 'Gabriel',
+                email: 'gabriel@teste.com'
+            }
+        } as Request
+
+        const mockResponde = makeMokeResponse()
+        userController.createUser(mockRequest, mockResponde)
+        expect(mockResponde.state.status).toBe(201)
+        expect(mockResponde.state.json).toMatchObject({message: 'User created'})
     })
 })
