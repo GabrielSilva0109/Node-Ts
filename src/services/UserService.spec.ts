@@ -1,7 +1,8 @@
-import { UserService } from "./UserService"
+import { User, UserService } from "./UserService"
 
 describe('UserService', () => {
-    const userService = new UserService()
+    const mockDb: User[] = []
+    const userService = new UserService(mockDb)
 
     it('Deve adicionar um novo usuario', () =>{
         const mockConsole = jest.spyOn(global.console, 'log')
