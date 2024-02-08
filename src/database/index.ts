@@ -4,8 +4,14 @@ export const AppDataSource = new DataSource({
     type: "sqlite",
     database: "./src/database/db.sqlite",
     migrations: [
-        "./migrations"
+        "./src/database/migrations/*.ts"
     ],
 
 })
 
+AppDataSource.initialize()
+    .then(() => {
+        console.log("Data Source has been Initialized!")
+    }).catch((error) =>{
+        console.error(error)
+    })

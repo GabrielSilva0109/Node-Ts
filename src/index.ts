@@ -8,8 +8,8 @@ const server = express()
 AppDataSource.initialize()
     .then(() => {
         console.log("Data Source has been Initialized!")
-    }).catch((err) =>{
-        console.error("Error during Data Source Initilization", err)
+    }).catch((error) =>{
+        console.error(error)
     })
 
 server.use(express.json())
