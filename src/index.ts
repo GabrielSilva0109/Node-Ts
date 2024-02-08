@@ -5,12 +5,7 @@ import { AppDataSource } from "./database"
 
 const server = express()
 
-AppDataSource.initialize()
-    .then(() => {
-        console.log("Data Source has been Initialized!")
-    }).catch((error) =>{
-        console.error(error)
-    })
+
 
 server.use(express.json())
 server.use(router)
