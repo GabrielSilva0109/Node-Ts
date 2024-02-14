@@ -1,2 +1,2 @@
-"use strict";
-console.log('hello new project update');
+"use strict"
+console.log('hello new project update')
