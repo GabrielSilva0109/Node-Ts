@@ -1,6 +1,6 @@
-import { EntityManager } from "typeorm";
-import { AppDataSource } from "../database";
-import { User } from "../entities/User";
+import { EntityManager } from "typeorm"
+import { AppDataSource } from "../database"
+import { User } from "../entities/User"
 
 export class UserRepository {
     private manager: EntityManager
